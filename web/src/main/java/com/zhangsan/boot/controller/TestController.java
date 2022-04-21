@@ -1,6 +1,9 @@
 package com.zhangsan.boot.controller;
 
+import com.zhangsan.boot.entity.TPadDevice;
+import com.zhangsan.boot.service.PadDeviceService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,5 +15,15 @@ public class TestController {
     public String test(){
         log.info("这是测试");
         return "success";
+    }
+
+    @Autowired
+    private PadDeviceService padDeviceService;
+
+    @GetMapping("/sqlTest")
+    public TPadDevice sqlTest(Long id){
+        log.info("这是测试");
+        TPadDevice padDevice = padDeviceService.getById(id);
+        return padDevice;
     }
 }

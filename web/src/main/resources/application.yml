@@ -2,11 +2,8 @@ server:
   port: 8081
 spring:
   datasource:
-    druid:
-      url: jdbc:mysql://localhost:3306/pay?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useLocalSessionState=true
-      username: root
-      password: 123456
-      driver-class-name: com.mysql.jdbc.Driver
-mybatis:
-  config-location: classpath:/mapper/*.xml
-  type-aliases-package: com.zhangsan.boot.entity
+    url: jdbc:mysql://localhost:3306/pay?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useLocalSessionState=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource

@@ -12,4 +12,21 @@
     <artifactId>service</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.zhangsan.boot</groupId>
+            <artifactId>dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zhangsan.boot</groupId>
+            <artifactId>dto</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zhangsan.boot</groupId>
+            <artifactId>entity</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

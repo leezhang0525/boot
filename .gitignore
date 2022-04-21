@@ -1,0 +1,19 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+target/
+logs/
+.mvn/
+*.iml
+/api/src/main/resources/rebel.xml
+/api-impl/src/main/resources/rebel.xml
+/common/src/main/resources/rebel.xml
+/core/src/main/resources/rebel.xml
+/dao/src/main/resources/rebel.xml
+/dto/src/main/resources/rebel.xml
+/exception/src/main/resources/rebel.xml
+/model/src/main/resources/rebel.xml
+/platform-api/src/main/resources/rebel.xml
+/platform-api-impl/src/main/resources/rebel.xml
+/service/src/main/resources/rebel.xml
+/service-impl/src/main/resources/rebel.xml
+/web/src/main/resources/rebel.xml
