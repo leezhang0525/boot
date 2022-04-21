@@ -11,13 +11,7 @@
 
     <artifactId>web</artifactId>
 
-
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.zhangsan.boot</groupId>-->
-<!--            <artifactId>service</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.zhangsan.boot</groupId>
             <artifactId>service-impl</artifactId>
@@ -45,12 +39,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

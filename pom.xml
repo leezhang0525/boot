@@ -27,6 +27,7 @@
         <module>entity</module>
         <module>dto</module>
         <module>common</module>
+        <module>generator</module>
     </modules>
 
     <properties>
