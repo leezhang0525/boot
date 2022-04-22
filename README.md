@@ -1,1 +1,1 @@
-springBoot+读写分离
+springBoot+读写分离+redis
