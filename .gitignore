@@ -4,6 +4,7 @@ target/
 logs/
 .mvn/
 *.iml
+*.class
 /api/src/main/resources/rebel.xml
 /api-impl/src/main/resources/rebel.xml
 /common/src/main/resources/rebel.xml

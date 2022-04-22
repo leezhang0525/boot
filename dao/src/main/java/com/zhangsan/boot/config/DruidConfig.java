@@ -19,15 +19,37 @@ public class DruidConfig {
     public static final String MAPPER_BASE_PACKAGE = "com.zhangsan.boot.dao";
     public static final String ENTITY_BASE_PACKAGE = "com.zhangsan.boot.entity";
 
+//    /**
+//     * 数据源
+//     * @return
+//     */
+//    @Bean
+//    @ConfigurationProperties(prefix = "spring.datasource")
+//    public DataSource dataSource(){
+//        return new DruidDataSource();
+//    }
+
     /**
-     * 数据源
+     * 主数据源
      * @return
      */
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource dataSource(){
+    @ConfigurationProperties(prefix = "spring.datasource.master")
+    public DataSource masterDataSource(){
         return new DruidDataSource();
     }
+
+    /**
+     * 从数据源
+     * @return
+     */
+    @Bean
+    @ConfigurationProperties(prefix = "spring.datasource.slave")
+    public DataSource slaveDataSource(){
+        return new DruidDataSource();
+    }
+
+//    public DataSource
 
     /**
      * SqlSessionFactory

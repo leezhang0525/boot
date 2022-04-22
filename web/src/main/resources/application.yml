@@ -1,9 +1,23 @@
 server:
   port: 8081
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/pay?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useLocalSessionState=true
+#    username: root
+#    password: 123456
+#    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/pay?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useLocalSessionState=true
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
+    master:
+      url: jdbc:mysql://localhost:3306/pay?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useLocalSessionState=true
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+    slave:
+      url: jdbc:mysql://localhost:3306/payslave?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useLocalSessionState=true
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
