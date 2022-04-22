@@ -27,6 +27,7 @@
         <module>entity</module>
         <module>dto</module>
         <module>common</module>
+        <module>generator</module>
     </modules>
 
     <properties>
@@ -35,6 +36,9 @@
         <mysql-connector.version>8.0.28</mysql-connector.version>
         <druid.version>1.1.10</druid.version>
         <fastjson.version>1.2.60</fastjson.version>
+        <guava.version>18.0</guava.version>
+        <lang3.version>3.10</lang3.version>
+        <aop.version>2.6.6</aop.version>
     </properties>
 
     <dependencyManagement>
@@ -58,6 +62,22 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${aop.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

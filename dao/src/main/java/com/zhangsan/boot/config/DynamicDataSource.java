@@ -1,5 +1,7 @@
 package com.zhangsan.boot.config;
 
+import com.zhangsan.boot.enums.core.DataSourceType;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
@@ -7,8 +9,16 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
  */
 public class DynamicDataSource extends AbstractRoutingDataSource {
 
+    /**
+     *
+     * @return Map<Object, DataSource> resolvedDataSources key值
+     */
     @Override
     protected Object determineCurrentLookupKey() {
-        return null;
+        if(StringUtils.isNotBlank(DataSourceContextHolder.getDataSource())){
+            return DataSourceContextHolder.getDataSource();
+        }
+        // 默认主库
+        return DataSourceType.MASTER.getValue();
     }
 }

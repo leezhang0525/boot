@@ -1,6 +1,7 @@
 package com.zhangsan.boot.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.zhangsan.boot.enums.core.DataSourceType;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
@@ -8,26 +9,21 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class DruidConfig {
 
     public static final String MAPPER_BASE_PACKAGE = "com.zhangsan.boot.dao";
     public static final String ENTITY_BASE_PACKAGE = "com.zhangsan.boot.entity";
-
-//    /**
-//     * 数据源
-//     * @return
-//     */
-//    @Bean
-//    @ConfigurationProperties(prefix = "spring.datasource")
-//    public DataSource dataSource(){
-//        return new DruidDataSource();
-//    }
 
     /**
      * 主数据源
@@ -49,16 +45,25 @@ public class DruidConfig {
         return new DruidDataSource();
     }
 
-//    public DataSource
-
     /**
-     * SqlSessionFactory
-     * @param dataSource
+     * 动态数据源
      * @return
-     * @throws Exception
      */
     @Bean
-    public SqlSessionFactory sqlSessionFactory (@Qualifier("dataSource") DataSource dataSource) throws Exception {
+    @DependsOn({ "masterDataSource", "slaveDataSource"})
+    @Primary
+    public DataSource dynamicDataSource() {
+        DynamicDataSource dataSource = new DynamicDataSource();
+        Map<Object, Object> targetDataSources = new HashMap<>();
+        targetDataSources.put(DataSourceType.MASTER.getValue(), masterDataSource());
+        targetDataSources.put(DataSourceType.SLAVE.getValue(), slaveDataSource());
+        dataSource.setTargetDataSources(targetDataSources);
+        // 这里不需要重复添加默认数据源，DynamicDataSource类中已经制定默认主数据源key
+        return dataSource;
+    }
+
+    @Bean
+    public SqlSessionFactory sqlSessionFactory (@Qualifier("dynamicDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
         sqlSessionFactoryBean.setTypeAliasesPackage(ENTITY_BASE_PACKAGE);
@@ -78,4 +83,10 @@ public class DruidConfig {
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         return mapperScannerConfigurer;
     }
+
+    @Bean
+    public DataSourceTransactionManager transactionManager(@Qualifier("dynamicDataSource") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+
 }

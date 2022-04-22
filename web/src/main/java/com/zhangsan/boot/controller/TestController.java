@@ -26,4 +26,18 @@ public class TestController {
         TPadDevice padDevice = padDeviceService.getById(id);
         return padDevice;
     }
+
+    @GetMapping("/masterDataSource")
+    public TPadDevice dynamicDataSourceTest(Long id){
+        log.info("这是测试");
+        TPadDevice padDevice = padDeviceService.masterGetById(id);
+        return padDevice;
+    }
+
+    @GetMapping("/slaveDataSource")
+    public TPadDevice slaveDataSource(Long id){
+        log.info("这是测试");
+        TPadDevice padDevice = padDeviceService.salverGetById(id);
+        return padDevice;
+    }
 }
