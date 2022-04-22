@@ -1,1 +1,1 @@
-这是一个单纯集成了mysql的版本
+springBoot+读写分离
