@@ -1,12 +1,5 @@
 server:
   port: 8081
-#spring:
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/pay?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useLocalSessionState=true
-#    username: root
-#    password: 123456
-#    driver-class-name: com.mysql.jdbc.Driver
-#    type: com.alibaba.druid.pool.DruidDataSource
 spring:
   datasource:
     master:
@@ -21,3 +14,12 @@ spring:
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    password: 123456
+    timeout: 3S
+logging:
+  level:
+    root: debug

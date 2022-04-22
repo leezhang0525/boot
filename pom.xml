@@ -39,6 +39,7 @@
         <guava.version>18.0</guava.version>
         <lang3.version>3.10</lang3.version>
         <aop.version>2.6.6</aop.version>
+        <redis.version>2.6.5</redis.version>
     </properties>
 
     <dependencyManagement>
@@ -79,7 +80,14 @@
                 <artifactId>spring-boot-starter-aop</artifactId>
                 <version>${aop.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${redis.version}</version>
+            </dependency>
         </dependencies>
+
     </dependencyManagement>
 
 </project>

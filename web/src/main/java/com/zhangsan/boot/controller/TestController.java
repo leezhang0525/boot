@@ -1,6 +1,7 @@
 package com.zhangsan.boot.controller;
 
 import com.zhangsan.boot.entity.TPadDevice;
+import com.zhangsan.boot.impl.RedisTemplateServiceImpl;
 import com.zhangsan.boot.service.PadDeviceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,14 @@ public class TestController {
         TPadDevice padDevice = padDeviceService.salverGetById(id);
         return padDevice;
     }
+
+    @Autowired
+    private RedisTemplateServiceImpl redisTemplateService;
+
+    @GetMapping("/redisTest")
+    public String redisTest(String param){
+        return redisTemplateService.setKey(param);
+    }
+
+
 }
