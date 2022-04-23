@@ -20,6 +20,36 @@ spring:
     database: 0
     password: 123456
     timeout: 3S
+  rocket:
+    #生产者
+    producer:
+      namesrvAddr: localhost:9876
+      producerGroupName: zhangsan_producer
+      # 消息最大长度 默认 1024 * 4 (4M)
+      maxMessageSize: 4096
+      # 发送消息超时时间，默认 3000
+      sendMsgTimeOut: 3000
+      retryTimesWhenSendFailed: 2
+    #消费者
+    consumer:
+      base:
+        namesrvAddr: localhost:9876
+        # 消费者线程数据量
+        consumeThreadMin: 5
+        consumeThreadMax: 32
+        # 设置一次消费消息的条数，默认1
+        consumeMessageBatchMaxSize: 1
+      orderly:
+        consumerGroupName: zhangsan_consumer
+        topicName: pay_success
+        tag: tag1
+      concurrently:
+        consumerGroupName: zhangsan_consumer1
+        topicName: pay_success1
+        tag: tag2
+
+
 logging:
   level:
     root: debug
+

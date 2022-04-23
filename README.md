@@ -1,1 +1,1 @@
-springBoot+读写分离+redis
+springBoot+读写分离+redis+rocketMQ

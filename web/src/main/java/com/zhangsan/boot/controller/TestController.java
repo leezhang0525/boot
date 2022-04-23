@@ -1,6 +1,7 @@
 package com.zhangsan.boot.controller;
 
 import com.zhangsan.boot.entity.TPadDevice;
+import com.zhangsan.boot.impl.MQServiceImpl;
 import com.zhangsan.boot.impl.RedisTemplateServiceImpl;
 import com.zhangsan.boot.service.PadDeviceService;
 import lombok.extern.slf4j.Slf4j;
@@ -50,5 +51,16 @@ public class TestController {
         return redisTemplateService.setKey(param);
     }
 
+    @Autowired
+    private MQServiceImpl mqService;
 
+    @GetMapping("/mqOrderLyTest")
+    public String mqOrderLyTest(){
+        return mqService.sendMQMsg();
+    }
+
+    @GetMapping("/mqConcurrentTest")
+    public String mqConcurrentTest(){
+        return mqService.sendRandomMQMsg();
+    }
 }
